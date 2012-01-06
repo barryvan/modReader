@@ -235,7 +235,7 @@ barryvan.tp.Reader = new Class({
 				continue;
 			}
 			
-			channel = (channelVariable - 1) & 63;
+			channel = (channelVariable - 1) & 0x63;
 			if (channelVariable & 128) {
 				maskVariable[channel] = this._dataview.getUint8(offset);
 				offset += 1;
@@ -248,32 +248,32 @@ barryvan.tp.Reader = new Class({
 			parameter = null;
 			noteData = null;
 			
-			if (maskVariable[channel] & 10) {
+			if (maskVariable[channel] & 0x10) {
 				note = lastNote[channel] ;
 			}
-			if (maskVariable[channel] & 20) {
+			if (maskVariable[channel] & 0x20) {
 				instrument = lastInstrument[channel];
 			}
-			if (maskVariable[channel] & 80) {
+			if (maskVariable[channel] & 0x80) {
 				effect = lastEffect[channel] || null;
 				parameter = lastParameter[channel];
 			}
 			
-			if (maskVariable[channel] & 1) {
+			if (maskVariable[channel] & 0x1) {
 				note = this._dataview.getUint8(offset);
 				offset += 1;
 				lastNote[channel] = note;
 			}
-			if (maskVariable[channel] & 2) {
+			if (maskVariable[channel] & 0x2) {
 				instrument = this._dataview.getUint8(offset);
 				offset += 1;
 				lastInstrument[channel] = instrument;
 			}
-			if (maskVariable[channel] & 4) {
+			if (maskVariable[channel] & 0x4) {
 				volume = this._dataview.getUint8(offset);
 				offset += 1;
 			}
-			if (maskVariable[channel] & 8) {
+			if (maskVariable[channel] & 0x8) {
 				effect = this._dataview.getUint8(offset);
 				offset += 1;
 				parameter = this._dataview.getUint8(offset);
