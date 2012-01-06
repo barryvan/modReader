@@ -1,0 +1,37 @@
+<!doctype html>
+<html>
+	<head>
+		<title>Parse OpenMPT MPTM Module Files</title>
+		
+		<script src="mootools-core.js" type="text/javascript"></script>
+		<script src="mootools-more.js" type="text/javascript"></script>
+		<script src="dataview.js" type="text/javascript"></script>
+		<script src="mptm.js" type="text/javascript"></script>
+		
+		<script type="text/javascript">
+			window.addEvent('domready', function() {
+				window.reader = new barryvan.tp.Reader({
+					//debug: true,
+					input: $('file'),
+					output: $('output')
+				});
+			});
+		</script>
+		
+		<style>
+			pre {
+				white-space: pre-wrap;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<h1>MPTM Parser</h1>
+		
+		<h2>Select file:</h2>
+		<input type="file" id="file">
+			
+		<h2>Output:</h2>
+		<pre id="output"></pre>
+	</body>
+</html>
