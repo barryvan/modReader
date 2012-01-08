@@ -235,8 +235,8 @@ barryvan.tp.Reader = new Class({
 				continue;
 			}
 			
-			channel = (channelVariable - 1) & 0x63;
-			if (channelVariable & 0x128) {
+			channel = (channelVariable - 1) & 63;
+			if (channelVariable & 128) {
 				maskVariable[channel] = this._dataview.getUint8(offset);
 				offset += 1;
 			}
